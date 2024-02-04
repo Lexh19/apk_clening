@@ -13,15 +13,13 @@ export default function App() {
     publishableKey='pk_test_ZmxlZXQtZHJ1bS02Ni5jbGVyay5hY2NvdW50cy5kZXYk'>
       <View style={styles.container}>
       {/*sign in component*/}
-        <SignedIn >
+       
           <NavigationContainer>
             <TabNavigation/>
           </NavigationContainer>
-        </SignedIn>
+        
         {/*signout component*/}
-        <SignedOut>
-          
-        </SignedOut>
+       
         <StatusBar style="auto" />
       </View>
     </ClerkProvider>
