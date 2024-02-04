@@ -1,31 +1,13 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native'
 import React from 'react'
 import Color from '../Utils/Color'
-import * as WebBrowser from "expo-web-browser";
-import { useOAuth } from "@clerk/clerk-expo";
-import { useWarmUpBrowser } from "../../hooks/warmUpBrowser";
 
-WebBrowser.maybeCompleteAuthSession();
+
+
 
 export default function Login() {
-  useWarmUpBrowser();
-  const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
-  const onPress = React.useCallback(async () => {
-    try {
-      const { createdSessionId, signIn, signUp, setActive } =
-        await startOAuthFlow();
- 
-      if (createdSessionId) {
-        setActive({ session: createdSessionId });
-      } else {
-        // Use signIn or signUp for next steps such as MFA
-      }
-    } catch (err) {
-      console.error("OAuth error", err);
-    }
-  }, []);
   return (
-    <View style={{alignItems: 'center'}}>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <Image source={require('../../../assets/image/login.png')}
         style={styles.loginImage}
       />
@@ -37,7 +19,7 @@ export default function Login() {
 
         <Text style={{fontSize:17, color:Color.WHITE, textAlign:'center', marginTop:20}}>Best App to find service near your which delivery your professional service </Text>
 
-        <TouchableOpacity style={styles.button} onPress={onPress}>
+        <TouchableOpacity style={styles.button} onPress={()=> console.log.apply("button_click")}>
           <Text style={{textAlign:'center', fontSize:17, color:Color.PRIMARY}}>Let's Get Started</Text>
         </TouchableOpacity>
       </View>
@@ -46,23 +28,23 @@ export default function Login() {
 }
 
 const styles = StyleSheet.create({
-  loginImage:{
-    width:230,
-    height:450,
-    marginTop:70,
-    borderWidth:4,
-    borderColor:Color.BLACK,
-    borderRadius:15
+  loginImage: {
+    width: '70%',
+    height: '50%', 
+    marginTop: '30%',
+    borderWidth: 4,
+    borderColor: Color.BLACK,
+    borderRadius: 15,
   },
-  subContainer:{
-    width:'100%',
-    backgroundColor:Color.PRIMARY,
-    height:'70%',
-    marginTop:-20,
-    borderTopLeftRadius:30,
-    borderTopRightRadius:30,
-    padding:20
-  }, 
+  subContainer: {
+    width: '100%',
+    backgroundColor: Color.PRIMARY,
+    height: '50%', 
+    marginTop: '-10%', 
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    padding: '5%', 
+  },
   button:{
     padding:15,
     backgroundColor:Color.WHITE,
